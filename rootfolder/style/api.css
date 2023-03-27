@@ -4,11 +4,7 @@
 body{
     position: relative;
 }
-/* section{
-    width: 80%;
-    border: 5px solid orange;
-    margin: auto;
-} */
+
     section{
         
         display: flex;
