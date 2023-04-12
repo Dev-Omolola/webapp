@@ -1,7 +1,7 @@
 const modal = document.getElementById('modal');
 const screen = document.getElementById('screen');
 const con = document.getElementById('staticBackdrop');
-const id = 'u71uT5FEhEFPkcor9k4N';
+const id = '1rGCCjB4JowsoaXXmt5T';
 const theLikes = document.getElementById('thelikes');
 const theComments = document.getElementById('theComments');
 let kkk;
@@ -11,7 +11,7 @@ screen.style.backgroundColor = "rgb(255,225,204)";
 const url = 'https://api.tvmaze.com/search/shows?q=girls';
 
 async function showcomment(movie_id) {
-  const id = 'u71uT5FEhEFPkcor9k4N';
+  const id = '1rGCCjB4JowsoaXXmt5T';
   const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
   const comments = await fetch(`${url}${id}/comments?item_id=${movie_id}`);
   const commentsData = await comments.json();
@@ -22,14 +22,15 @@ let commentsHTML = '';
   for (let index = 0; index < commentsData.length; index++) {
     const { username } = commentsData[index];
     const { comment } = commentsData[index];
-    commentsHTML += `<p>${username}: ${comment}</p>`;
+    const { creation_date } = commentsData[index]
+    commentsHTML += `<p>${creation_date}: ${username}: ${comment}</p>`;
   }
 
   document.getElementById(`theComments${movie_id}`).innerHTML = commentsHTML;
 }
 
 async function showreservation(movie_id) {
-  const id = 'u71uT5FEhEFPkcor9k4N';
+  const id = '1rGCCjB4JowsoaXXmt5T';
   const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
   const reservations = await fetch(`${url}${id}/reservations?item_id=${movie_id}`);
   const reservationsData = await reservations.json();
@@ -162,7 +163,7 @@ const screen1 = document.getElementById('comment-screen');
 
 
 async function like(movie_id) {
-  const id = 'u71uT5FEhEFPkcor9k4N';
+  const id = '1rGCCjB4JowsoaXXmt5T';
   const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
   const response = await fetch(`${url}${id}/likes`, {
     method: 'POST',
@@ -193,7 +194,7 @@ async function showNumOfLikes(movie_id) {
 async function comment_btn(movie_id) {
   const inp = document.getElementById(`comment-name${movie_id}`);
   const txt = document.getElementById(`comment-text${movie_id}`);
-  const id = 'u71uT5FEhEFPkcor9k4N';
+  const id = '1rGCCjB4JowsoaXXmt5T';
   const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
   const response = await fetch(`${url}${id}/comments`, {
     method: 'POST',
@@ -212,12 +213,16 @@ async function comment_btn(movie_id) {
   showcomment(movie_id);
 }
 
-async function Reservation_btn(movie_id) {
-  const reserver = document.getElementById(`Reservation-name${movie_id}`);
-  const reservationstartdate = document.getElementById(`Reservation-date${movie_id}`);
-  const reservationenddate = document.getElementById(`Reservation-end${movie_id}`);
 
-  const id = 'u71uT5FEhEFPkcor9k4N';
+
+async function Reservation_btn(movie_id) {
+  const reserver = document.getElementById(`Reserve-name${movie_id}`);
+  const reservationstartdate = document.getElementById(`Reserve-date${movie_id}`);
+  const reservationenddate = document.getElementById(`Reserve-end${movie_id}`);
+  // reservationstartdate.value = start_date;
+  // reservationenddate.value = end_date;
+
+  const id = '1rGCCjB4JowsoaXXmt5T';
   const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
   const response = await fetch(`${url}${id}/reservations/`, {
     method: 'POST',
@@ -227,8 +232,8 @@ async function Reservation_btn(movie_id) {
     body: JSON.stringify({
       item_id: movie_id,
       username: reserver.value,
-      date_start: Number(reservationstartdate.value),
-      date_end: Number(reservationenddate.value),
+      date_start:reservationstartdate.value,
+      date_end:reservationenddate.value,
 
     }),
   });
