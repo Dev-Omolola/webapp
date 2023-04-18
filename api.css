@@ -2,43 +2,55 @@
 *::after,
 *::before {
   box-sizing: border-box;
+ 
   
 }
 
 body {
   position: relative;
+
   
 }
 
 section {
   display: flex;
   flex-wrap: wrap;
-  border: 5px solid black;
+  /* border: 5px solid black; */
   justify-content: center;
 }
 
 nav {
   /* border: 5px solid black; */
-  background-image: linear-gradient(to left, rgba(61, 61, 61), rgba(156, 156, 156));
-  width: 100%;
-  height: 50px;
+  /* background-image: linear-gradient(to left, rgba(61, 61, 61), rgba(156, 156, 156)); */
+  
+  height: 80px;
   position: sticky;
   top: 0;
   z-index: 1;
+  border: 1px solid white;
 }
 
 figure {
-  margin: 20px;
-  padding: 20px;
-  width: 300px;
+  position: relative;
+  padding: 20px 0;
+  width: 320px;
   font-weight: 700;
+  
+}
+figcaption{
+  color: 
+  rgba(156, 163, 175, 1);
+}
+i{
+  color: red;
 }
 
-ul {
+ ul {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   list-style-type: none;
-}
+} 
 
 ul li {
   padding: 0 30px;
@@ -54,8 +66,34 @@ ul a {
 } */
 
 .img {
-  width: 200px;
-  box-shadow: 2px 2px 2px 2px grey;
+  width: 100%;
+  object-fit: 100%;
+  height: 230px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  /* box-shadow: 2px 2px 2px 2px grey; */
+}
+.profile{
+  width: 100%;
+  text-align: center;
+  color: white;
+  border-radius: 15px;
+  background-color: rgba(0,0,0,0.1);
+  box-shadow: 2px 3px 9px rgba(255,255,255,0.1);
+  padding-bottom: 10px;
+  transition: .5s;
+  border: 1px solid transparent;
+}
+.profile:hover{
+  border: 1px solid rgba(32,209,237, 0.5);
+}
+#btn{
+  background-color: 
+  rgb(32,209,237);
+  border-radius: 30px;
+  font-size: 16px;
+  padding: 10px 25px;
+
 }
 
 .like {
@@ -65,18 +103,18 @@ ul a {
 
 /* Gradient for the button */
 .reserve_btn, .comment-btn {
-  background: linear-gradient(to bottom, #ff5f6d, #ffc371);
+  background-color: 
+  rgb(32,209,237);
   border: none;
   padding: 10px 40px;
-  color: #fff;
-  font-size: 20px;
+  color:black;
+  font-size: 23px;
   cursor: pointer;
   border-radius: 30px;
 }
 
 .reserve_btn:hover, .comment-btn:hover {
-  background: white;
-  color: black;
+  color: white;
 }
 
 .div-input {
@@ -93,7 +131,10 @@ ul a {
 }
 
 #screen {
-  position: relative;
+  display: flex;
+  align-self: center;
+  justify-content: space-around;
+
 }
 
 .modal-body {
@@ -105,7 +146,7 @@ ul a {
   
 }
 .modal-content{
-  background: -webkit-linear-gradient(rgb(248,34,28), rgb(242,139,16), rgb(248,34,28));
+  background: -webkit-linear-gradient(rgba(15, 23, 42, 1), rgba(15, 23, 42, 1), rgba(15, 23, 42, 1));
 }
 
  .modal-body figure {
@@ -120,34 +161,21 @@ ul a {
 .img-div {
   width: 100%;
   height: 60vh;
-  box-shadow: 2px 2px 2px 2px grey;
+  /* box-shadow: 2px 2px 2px 2px grey; */
 }
 
 .img-div img {
   width: 100%;
   height: inherit;
   margin: auto;
+  border-radius: 20px;
 }
 
-.comment{
-  /* border: 1px solid white; */
-  
-}
 
-/* #modal {
-  position: absolute;
-  width: 100%;
-  min-height: 100vh;
-  border: 1px solid red;
-  top: 0;
-
-  z-index: 2;
-  background-color: rgba(236, 97, 56, 0.3);
-} */
 footer{
   font-size: 15px;
   font-weight: 700;
-  background-color: black;
+  /* background-color: black; */
   display: flex;
   justify-content: space-between;
   color: white;
@@ -155,7 +183,7 @@ footer{
 }
 footer ul{
   display: inline;
-  font-size: 18px;
+  font-size: 14px;
 }
 footer img{
   width: 150px;
@@ -164,4 +192,8 @@ footer img{
    footer{
     flex-wrap: wrap;
    }
+}
+textarea{
+  border-radius: 15px;
+  width: 100%;
 }

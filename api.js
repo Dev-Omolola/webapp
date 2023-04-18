@@ -7,7 +7,7 @@ const theComments = document.getElementById('theComments');
 let kkk;
 // const commenet_array = [];
 const reservation_array = [];
-screen.style.backgroundColor = "rgb(255,225,204)";
+body.style.backgroundColor = "rgba(15, 23, 42, 1)";
 const url = 'https://api.tvmaze.com/search/shows?q=girls';
 
 async function showcomment(movie_id) {
@@ -27,9 +27,11 @@ let commentsHTML = '';
   }
 
   document.getElementById(`theComments${movie_id}`).innerHTML = commentsHTML;
+  console.log(commentsData.length);
+  document.getElementById(`comment-count${movie_id}`).innerHTML = (commentsData.length) + "-" + "Comments"
 }
 
-async function showreservation(movie_id) {
+async function showReservation(movie_id) {
   const id = '1rGCCjB4JowsoaXXmt5T';
   const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
   const reservations = await fetch(`${url}${id}/reservations?item_id=${movie_id}`);
@@ -43,6 +45,8 @@ async function showreservation(movie_id) {
   }
 
   document.getElementById(`theReservations${movie_id}`).innerHTML = reservationHTML;
+  document.getElementById(`reserve-count${movie_id}`).innerHTML = (reservationsData.length) +"-"+ "reservations"
+
 }
 
 async function project(kkk) {
@@ -53,7 +57,9 @@ async function project(kkk) {
     kkk = element.show.id;
     showNumOfLikes(kkk, theLikes);
     screen.innerHTML += `
-   <figure>
+    
+  <figure>
+    <div class="profile">
         <img class="img" src="${element.show.image.original}" alt="">
         <figcaption>
             ${element.show.name}
@@ -63,10 +69,11 @@ async function project(kkk) {
            <button class="like" onclick='like(${element.show.id})'>
               <i class="fa-sharp fa-regular fa-heart"></i>
             </button>
+          
       <div>
         <div>
           
-          <button onclick='showcomment(${element.show.id})' type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop${index}">
+          <button onclick='showcomment(${element.show.id})' type="button" id="btn" class="btn my-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop${index}">
             Comment
           </button>
         
@@ -90,7 +97,7 @@ async function project(kkk) {
                     <div class="comment">
                       
                       <fieldset>
-                        <input type="text" name="" id="comment-name${kkk}" placeholder="Name">
+                        <input type="text" name="" class="form-check-input w-100 py-3 rounded" id="comment-name${kkk}" placeholder="Name">
                         <textarea name="" placeholder="Your insights" id="comment-text${kkk}" cols="30" rows="10" class="my-4"></textarea>
                       </fieldset>
                       <button type="button" class="comment-btn" onclick="comment_btn(${element.show.id}, ${index})">
@@ -99,7 +106,7 @@ async function project(kkk) {
                     </div>
                   </figure>
                   <div id="comment-screen${kkk}">
-                        <p>Comments</p>
+                        <p id="comment-count${kkk}"></p>
                         <span id="theComments${kkk}"></span>
                       </div>
                 </div>
@@ -110,7 +117,7 @@ async function project(kkk) {
         </div>
       </div>
         <!-- Button trigger modal -->
-        <button onclick='showReservation(${element.show.id})' type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop22${index}">
+        <button onclick='showReservation(${element.show.id})' type="button" id="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop22${index}">
         Reservation
         </button>
 
@@ -132,9 +139,9 @@ async function project(kkk) {
                 <div>
                   
                    <fieldset>
-                     <div class="my-2 div-input"><label for="">Name: </label><input type="text" name="" id="Reserve-name${kkk}" placeholder="Name"></div>
-                     <div class="my-2 div-input"><label for="">Start-Date: </label><input type="date" name="" id="Reserve-date${kkk}"></div>
-                     <div class="my-2 div-input"><label for="">End-Date: </label><input type="date" name="" id="Reserve-end${kkk}"></div>
+                     <div class="my-2 div-input"><label for="">Name: </label><input type="text" name="" class="form-check-input w-100 py-3 rounded" id="Reserve-name${kkk}" placeholder="Name"></div>
+                     <div class="my-2 div-input"><label for="">Start-Date: </label><input type="date" name="" class="form-check-input w-100 py-3 rounded" id="Reserve-date${kkk}"></div>
+                     <div class="my-2 div-input"><label for="">End-Date: </label><input type="date" name="" class="form-check-input w-100 py-3 rounded" id="Reserve-end${kkk}"></div>
                   
                    </fieldset>
                    <button type="button" onclick="Reservation_btn(${element.show.id}, ${index})" class="reserve_btn">
@@ -143,15 +150,15 @@ async function project(kkk) {
                  </div>
               </figure>
               <div id="reservation-screen">
-              <h4>Reservations</h4>
-              <h5 id="theReservations${kkk}"></h5>
+              <h5><span id="reserve-count${kkk}">Reservations</h5>
+              <span id="theReservations${kkk}"></span>
               </div>
             </div>
           </div>
         </div>
       </div>
-  
-   </figure>`;
+    </div>
+  </figure>`;
   });
   console.log(kkk);
 }
