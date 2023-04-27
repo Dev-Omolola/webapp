@@ -18,16 +18,41 @@ section {
   /* border: 5px solid black; */
   justify-content: center;
 }
+.logo-img{
+  width: 150px;
+  
+}
+.logo-img img{
+  width: 100%;
+}
 
 nav {
-  /* border: 5px solid black; */
-  /* background-image: linear-gradient(to left, rgba(61, 61, 61), rgba(156, 156, 156)); */
-  
+  background-color: rgba(15, 23, 42, 1);
   height: 80px;
   position: sticky;
   top: 0;
   z-index: 1;
-  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+nav button{
+   background: inherit;
+   border: none;
+   color:rgba(32,209,237,0.5);
+}
+nav a{
+  text-decoration: none;
+  color: rgba(32,209,237,0.5) ;
+}
+.search-input{
+  display: flex;
+  align-items: center;
+}
+.search-input input{
+  background: inherit;
+  color: rgb(32,209,237);
 }
 
 figure {
@@ -60,10 +85,6 @@ ul li {
 ul a {
   text-decoration: none;
 }
-
-/* .search-input input{
-  padding-right:150px;
-} */
 
 .img {
   width: 100%;

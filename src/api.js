@@ -1,3 +1,5 @@
+// const { Script } = require("domelementtype");
+
 const modal = document.getElementById('modal');
 const screen = document.getElementById('screen');
 const con = document.getElementById('staticBackdrop');
@@ -167,8 +169,6 @@ project();
 
 const screen1 = document.getElementById('comment-screen');
 
-
-
 async function like(movie_id) {
   const id = '1rGCCjB4JowsoaXXmt5T';
   const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
@@ -186,6 +186,7 @@ async function like(movie_id) {
   console.log(data);
   showNumOfLikes(movie_id);
 }
+
 async function showNumOfLikes(movie_id) {
   const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
   const liked = await fetch(`${url}${id}/likes`);
@@ -197,6 +198,7 @@ async function showNumOfLikes(movie_id) {
   console.log(foundLikes.likes);
   document.getElementById(`thelikes${movie_id}`).innerHTML = foundLikes.likes;
 }
+
 
 async function comment_btn(movie_id) {
   const inp = document.getElementById(`comment-name${movie_id}`);
@@ -247,6 +249,10 @@ async function Reservation_btn(movie_id) {
   console.log(movie_id);
   const data = await response.text();
   console.log(data);
-  showreservation(movie_id);
+  showReservation(movie_id);
 }
+
+
+
+
 
